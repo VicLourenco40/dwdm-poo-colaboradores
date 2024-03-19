@@ -1,5 +1,5 @@
 ﻿namespace DwdmPooColaboradores {
-    public class Colaboradores {
+    public class Colaborador {
         public const double SubsidioAlimentacao = 140;
 
         int codigo;
@@ -8,7 +8,7 @@
         double plafondAlimentacao;
         bool seguroSaude;
 
-        public Colaboradores(int codigo, string nome, double vencimento,
+        public Colaborador(int codigo, string nome, double vencimento,
                              bool plafondAlimentacao, bool seguroSaude) {
             this.codigo = codigo;
             this.nome = nome;
@@ -22,7 +22,7 @@
 
     internal class Program {
         static void Main(string[] args) {
-            Colaboradores[] colaboradores = [];
+            Colaborador[] colaboradores = [];
         }
     }
 }
