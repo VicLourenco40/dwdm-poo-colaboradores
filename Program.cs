@@ -174,15 +174,15 @@
                           " 2. Listar colaboradores\n" +
                           " 3. Consultar colaborador\n" +
                           " 4. Alterar colaborador\n" +
-                          " 5. Eliminar colaborador\n"+
+                          " 5. Eliminar colaborador\n" +
                           " 6. Consultar saldo de cartão de colaborador\n" +
-                          " 7. Usar cartão para refeições\n"+
-                          " 8. Carregar cartão de alimentação de colaborador\n"+
+                          " 7. Usar cartão para refeições\n" +
+                          " 8. Carregar cartão de alimentação de colaborador\n" +
                           " 9. Carregar cartão de alimentação de todos os colaboradores\n" +
-                          "10. Calcular média dos vencimentos\n"+
-                          "11. Colaborador com maior vencimento\n"+
-                          "12. Colaborador com menor vencimento\n"+
-                          "13. Listar colaboradores com seguro de saúde\n"+
+                          "10. Calcular média dos vencimentos\n" +
+                          "11. Colaborador com maior vencimento\n" +
+                          "12. Colaborador com menor vencimento\n" +
+                          "13. Listar colaboradores com seguro de saúde\n" +
                           " 0. Sair\n\n" +
                           ": ");
 
