@@ -33,7 +33,7 @@
         public void AlterarColaborador(double vencimento, double plafondAlimentacao, bool seguroSaude) {
             this.vencimento = vencimento;
             this.plafondAlimentacao += plafondAlimentacao;
-            this.seguroSaude = seguroSaude;     
+            this.seguroSaude = seguroSaude;
         }
     }
 
@@ -58,7 +58,7 @@
 
             for (int i = 0; i < numero; i++) {
                 Console.Write($"\nColaborador {i + 1}\n");
-                
+
                 Console.Write("Código: ");
                 int codigo = int.Parse(Console.ReadLine());
 
@@ -82,15 +82,13 @@
             Console.Write("\n");
         }
         public static void ListarColaboradores() {
-            Console.Write("Listagem de registos de colaboradores\n");
-
             for (int i = 0; i < colaboradores.Length; i++) {
-                Console.Write($"\nColaborador {i + 1}\n");
+                Console.Write($"Colaborador {i + 1}\n");
 
                 colaboradores[i].ListarColaborador();
-            }
 
-            Console.Write("\n");
+                Console.Write("\n");
+            }
         }
 
         public static int FindColaboradorByNome() {
@@ -110,7 +108,7 @@
 
         public static void ConsultarColaborador() {
             int index = FindColaboradorByNome();
-            
+
             Console.Write("\n");
 
             if (index == -1) { return; }
@@ -122,7 +120,7 @@
 
         public static void AlterarColaborador() {
             int index = FindColaboradorByNome();
-            
+
             Console.Write("\n");
 
             if (index == -1) { return; }
@@ -137,10 +135,27 @@
             bool seguroSaude = GetBool(Console.ReadLine());
 
             colaboradores[index].AlterarColaborador(vencimento, plafondAlimentacao, seguroSaude);
+
             Console.Write("\nRegisto alterado com sucesso.\n\n");
         }
 
-        public static void ConsultarSaldoSubsidioAlimentacao() {
+        public static void EliminarColaborador() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            for (int i = index; i < colaboradores.Length - 1; i++) {
+                colaboradores[i] = colaboradores[i + 1];
+            }
+
+            Array.Resize(ref colaboradores, colaboradores.Length - 1);
+
+            Console.Write("Colaborador eliminado com sucesso.\n\n");
+        }
+
+        public static void ConsultarSaldoCartao() {
             int index = FindColaboradorByNome();
 
             Console.Write("\n");
@@ -155,20 +170,20 @@
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
-                          "1. Inserir colaboradores\n" +
-                          "2. Listagem de colaboradores\n" +
-                          "3. Consultar colaborador\n" +
-                          "4. Alterar colaborador\n" +
-                          "5. Eliminar o registo de um colaborador\n"+
-                          "6. Consultar o saldo do subsídio de alimentação de um colaborador\n"+
-                          "7. Usar o cartão para as refeições\n"+
-                          "8. Carregar o plafond do subsídio de alimentação de um colaborador\n"+
-                          "9. Carregar o plafond do subsídio de alimentação de todos os colaboradores\n"+
-                          "10. Calcular a média dos vencimentos dos colaboradores\n"+
-                          "11. O nome do colaborador com o maior vencimento\n"+
-                          "12. O nome do colaborador com o menor vencimento\n"+
-                          "13. Listagem dos inscritos no seguro de saúde\n"+
-                          "0. Sair\n\n" +
+                          " 1. Inserir colaboradores\n" +
+                          " 2. Listar colaboradores\n" +
+                          " 3. Consultar colaborador\n" +
+                          " 4. Alterar colaborador\n" +
+                          " 5. Eliminar colaborador\n"+
+                          " 6. Consultar saldo de cartão de colaborador\n" +
+                          " 7. Usar cartão para refeições\n"+
+                          " 8. Carregar cartão de alimentação de colaborador\n"+
+                          " 9. Carregar cartão de alimentação de todos os colaboradores\n" +
+                          "10. Calcular média dos vencimentos\n"+
+                          "11. Colaborador com maior vencimento\n"+
+                          "12. Colaborador com menor vencimento\n"+
+                          "13. Listar colaboradores com seguro de saúde\n"+
+                          " 0. Sair\n\n" +
                           ": ");
 
             int opcao = int.Parse(Console.ReadLine());
@@ -191,9 +206,14 @@
                     AlterarColaborador();
                     break;
 
-                case 6:
-                    ConsultarSaldoSubsidioAlimentacao();
+                case 5:
+                    EliminarColaborador();
                     break;
+
+                case 6:
+                    ConsultarSaldoCartao();
+                    break;
+
                 case 0:
                     Environment.Exit(0);
                     break;
