@@ -30,7 +30,19 @@
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
-                          "1. Exemplo\n" +
+                          "1. Inserir colaborador\n" +
+                          "2. Listagem de registos de colaboradores\n" +
+                          "3. Consultar o registo de um colaborador\n" +
+                          "4. Alterar o registo de um colaborador\n" +
+                          "5. Eliminar o registo de um colaborador\n"+
+                          "6. Consultar o saldo do subsídio de alimentação de um colaborador\n"+
+                          "7. Usar o cartão para as refeições\n"+
+                          "8. Carregar o plafond do subsídio de alimentação de um colaborador\n"+
+                          "9. Carregar o plafond do subsídio de alimentação de todos os colaboradores\n"+
+                          "10. Calcular a média dos vencimentos dos colaboradores\n"+
+                          "11. O nome do colaborador com o maior vencimento\n"+
+                          "12. O nome do colaborador com o menor vencimento\n"+
+                          "13. Listagem dos inscritos no ieguro de saúde\n"+
                           "0. Sair\n\n" +
                           ": ");
 
