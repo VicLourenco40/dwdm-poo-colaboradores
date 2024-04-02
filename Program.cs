@@ -26,6 +26,12 @@
                           $"Plafond de alimentação: {this.plafondAlimentacao}\n" +
                           $"Seguro de saúde: {this.seguroSaude}\n");
         }
+
+        public void AlterarColaborador(double vencimento, double plafondAlimentacao, bool seguroSaude) {
+            this.vencimento = vencimento;
+            this.plafondAlimentacao += plafondAlimentacao;
+            this.seguroSaude = seguroSaude;     
+        }
     }
 
     internal class Program {
@@ -99,7 +105,7 @@
                           "10. Calcular a média dos vencimentos dos colaboradores\n"+
                           "11. O nome do colaborador com o maior vencimento\n"+
                           "12. O nome do colaborador com o menor vencimento\n"+
-                          "13. Listagem dos inscritos no ieguro de saúde\n"+
+                          "13. Listagem dos inscritos no seguro de saúde\n"+
                           "0. Sair\n\n" +
                           ": ");
 
@@ -114,6 +120,9 @@
                 case 2:
                     listarColaboradores();
                     break;
+                
+                case 4:
+
 
                 case 0:
                     Environment.Exit(0);
