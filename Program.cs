@@ -128,8 +128,10 @@
 
             Console.Write("Vencimento: ");
             double vencimento = double.Parse(Console.ReadLine());
+
             Console.Write("Plafond de alimentação a adicionar: ");
             double plafondAlimentacao = double.Parse(Console.ReadLine());
+
             Console.Write("Seguro de saúde (S/n): ");
             bool seguroSaude = GetBool(Console.ReadLine());
 
@@ -143,7 +145,7 @@
                           "1. Inserir colaboradores\n" +
                           "2. Listagem de colaboradores\n" +
                           "3. Consultar colaborador\n" +
-                          "4. Alterar o registo de um colaborador\n" +
+                          "4. Alterar colaborador\n" +
                           "5. Eliminar o registo de um colaborador\n"+
                           "6. Consultar o saldo do subsídio de alimentação de um colaborador\n"+
                           "7. Usar o cartão para as refeições\n"+
