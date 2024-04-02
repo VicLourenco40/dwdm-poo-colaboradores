@@ -19,6 +19,8 @@
             }
         }
 
+        public string getNome() { return nome; }
+
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
@@ -78,7 +80,7 @@
 
             Console.Write("\n");
         }
-        public static void listarColaboradores() {
+        public static void ListarColaboradores() {
             Console.Write("Listagem de registos de colaboradores\n");
 
             for (int i = 0; i < colaboradores.Length; i++) {
@@ -90,12 +92,39 @@
             Console.Write("\n");
         }
 
+        public static int FindColaboradorByNome() {
+            Console.Write("Nome a pesquisar: ");
+            string nome = Console.ReadLine().ToLower();
+
+            for (int i = 0; i < colaboradores.Length; i++) {
+                if (nome == colaboradores[i].getNome().ToLower()) {
+                    return i;
+                }
+            }
+
+            Console.Write("\nNenhum colaborador encontrado.\n");
+
+            return -1;
+        }
+
+        public static void ConsultarColaborador() {
+            int index = FindColaboradorByNome();
+            
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            colaboradores[index].ListarColaborador();
+
+            Console.Write("\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
                           "1. Inserir colaboradores\n" +
-                          "2. Listagem de registos de colaboradores\n" +
-                          "3. Consultar o registo de um colaborador\n" +
+                          "2. Listagem de colaboradores\n" +
+                          "3. Consultar colaborador\n" +
                           "4. Alterar o registo de um colaborador\n" +
                           "5. Eliminar o registo de um colaborador\n"+
                           "6. Consultar o saldo do subsídio de alimentação de um colaborador\n"+
@@ -118,7 +147,11 @@
                     break;
 
                 case 2:
-                    listarColaboradores();
+                    ListarColaboradores();
+                    break;
+
+                case 3:
+                    ConsultarColaborador();
                     break;
                 
                 case 4:
