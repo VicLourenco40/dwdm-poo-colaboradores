@@ -18,22 +18,20 @@
                 this.plafondAlimentacao = SubsidioAlimentacao;
             }
         }
-        public void listarColaborador(){
-            Console.WriteLine($"Código: {codigo}\n" +
-                              $"Nome: {nome}\n" +
-                              $"Vencimento: {vencimento}\n" +
-                              $"Plafond de alimentação: {plafondAlimentacao}\n" +
-                              $"Seguro de saúde: {seguroSaude}\n");
 
+        public void ListarColaborador() {
+            Console.Write($"Código: {this.codigo}\n" +
+                          $"Nome: {this.nome}\n" +
+                          $"Vencimento: {this.vencimento}\n" +
+                          $"Plafond de alimentação: {this.plafondAlimentacao}\n" +
+                          $"Seguro de saúde: {this.seguroSaude}\n");
         }
-
     }
-
 
     internal class Program {
         private static Colaborador[] colaboradores = [];
 
-        public static bool getBool(string boolString) {
+        public static bool GetBool(string boolString) {
             boolString = boolString.ToLower();
 
             if (boolString == "" || boolString == "s") {
@@ -62,10 +60,10 @@
                 double vencimento = double.Parse(Console.ReadLine());
 
                 Console.Write("Subsídio de alimentação (S/n): ");
-                bool subsidioAlimentacao = getBool(Console.ReadLine());
+                bool subsidioAlimentacao = GetBool(Console.ReadLine());
 
                 Console.Write("Seguro de saúde (S/n): ");
-                bool seguroSaude = getBool(Console.ReadLine());
+                bool seguroSaude = GetBool(Console.ReadLine());
 
                 Colaborador colaborador = new(codigo, nome, vencimento,
                                               subsidioAlimentacao, seguroSaude);
@@ -74,11 +72,16 @@
 
             Console.Write("\n");
         }
-        public static void listarColaboradores(){
-            Console.WriteLine("Listagem de registos de colaboradores\n");
+        public static void listarColaboradores() {
+            Console.Write("Listagem de registos de colaboradores\n");
+
             for (int i = 0; i < colaboradores.Length; i++) {
-                colaboradores[i].listarColaborador();
+                Console.Write($"\nColaborador {i + 1}\n");
+
+                colaboradores[i].ListarColaborador();
             }
+
+            Console.Write("\n");
         }
 
         public static void Menu() {
