@@ -81,15 +81,13 @@
             Console.Write("\n");
         }
         public static void ListarColaboradores() {
-            Console.Write("Listagem de registos de colaboradores\n");
-
             for (int i = 0; i < colaboradores.Length; i++) {
-                Console.Write($"\nColaborador {i + 1}\n");
+                Console.Write($"Colaborador {i + 1}\n");
 
                 colaboradores[i].ListarColaborador();
-            }
 
-            Console.Write("\n");
+                Console.Write("\n");
+            }
         }
 
         public static int FindColaboradorByNome() {
@@ -136,7 +134,24 @@
             bool seguroSaude = GetBool(Console.ReadLine());
 
             colaboradores[index].AlterarColaborador(vencimento, plafondAlimentacao, seguroSaude);
+
             Console.Write("\nRegisto alterado com sucesso.\n\n");
+        }
+
+        public static void EliminarColaborador() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            for (int i = index; i < colaboradores.Length - 1; i++) {
+                colaboradores[i] = colaboradores[i + 1];
+            }
+
+            Array.Resize(ref colaboradores, colaboradores.Length - 1);
+
+            Console.Write("Colaborador eliminado com sucesso.\n\n");
         }
 
         public static void Menu() {
@@ -146,7 +161,7 @@
                           "2. Listagem de colaboradores\n" +
                           "3. Consultar colaborador\n" +
                           "4. Alterar colaborador\n" +
-                          "5. Eliminar o registo de um colaborador\n"+
+                          "5. Eliminar colaborador\n"+
                           "6. Consultar o saldo do subsídio de alimentação de um colaborador\n"+
                           "7. Usar o cartão para as refeições\n"+
                           "8. Carregar o plafond do subsídio de alimentação de um colaborador\n"+
@@ -176,6 +191,10 @@
                 
                 case 4:
                     AlterarColaborador();
+                    break;
+
+                case 5:
+                    EliminarColaborador();
                     break;
 
                 case 0:
