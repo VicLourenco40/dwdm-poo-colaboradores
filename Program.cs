@@ -18,13 +18,29 @@
                 this.plafondAlimentacao = SubsidioAlimentacao;
             }
         }
+        public void listarColaborador(){
+            Console.WriteLine($"Código: {codigo}\n" +
+                              $"Nome: {nome}\n" +
+                              $"Vencimento: {vencimento}\n" +
+                              $"Plafond de alimentação: {plafondAlimentacao}\n" +
+                              $"Seguro de saúde: {seguroSaude}\n");
+
+        }
+
     }
+
 
     internal class Program {
         private static Colaborador[] colaboradores = [];
 
         public static void Exemplo() {
             Console.Write($"Número de colaboradores: {colaboradores.Length}\n\n");
+        }
+        public static void listarColaboradores(){
+            Console.WriteLine("Listagem de registos de colaboradores\n");
+            for (int i = 0; i < colaboradores.Length; i++) {
+                colaboradores[i].listarColaborador();
+            }
         }
 
         public static void Menu() {
@@ -49,10 +65,13 @@
             int opcao = int.Parse(Console.ReadLine());
 
             Console.Clear();
-
             switch (opcao) {
                 case 1:
                     Exemplo();
+                    break;
+
+                case 2:
+                    listarColaboradores();
                     break;
 
                 case 0:
