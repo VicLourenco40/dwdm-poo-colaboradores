@@ -9,12 +9,12 @@
         private bool seguroSaude;
 
         public Colaborador(int codigo, string nome, double vencimento,
-                           bool plafondAlimentacao, bool seguroSaude) {
+                           bool subsidioAlimentacao, bool seguroSaude) {
             this.codigo = codigo;
             this.nome = nome;
             this.vencimento = vencimento;
             this.seguroSaude = seguroSaude;
-            if (plafondAlimentacao) {
+            if (subsidioAlimentacao) {
                 this.plafondAlimentacao = SubsidioAlimentacao;
             }
         }
@@ -33,8 +33,46 @@
     internal class Program {
         private static Colaborador[] colaboradores = [];
 
-        public static void Exemplo() {
-            Console.Write($"Número de colaboradores: {colaboradores.Length}\n\n");
+        public static bool getBool(string boolString) {
+            boolString = boolString.ToLower();
+
+            if (boolString == "" || boolString == "s") {
+                return true;
+            }
+            return false;
+        }
+
+        public static void InserirColaboradores() {
+            Console.Write("Nº de colaboradores a inserir: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            int oldLength = colaboradores.Length;
+            Array.Resize(ref colaboradores, colaboradores.Length + numero);
+
+            for (int i = 0; i < numero; i++) {
+                Console.Write($"\nColaborador {i + 1}\n");
+                
+                Console.Write("Código: ");
+                int codigo = int.Parse(Console.ReadLine());
+
+                Console.Write("Nome: ");
+                string nome = Console.ReadLine();
+
+                Console.Write("Vencimento: ");
+                double vencimento = double.Parse(Console.ReadLine());
+
+                Console.Write("Subsídio de alimentação (S/n): ");
+                bool subsidioAlimentacao = getBool(Console.ReadLine());
+
+                Console.Write("Seguro de saúde (S/n): ");
+                bool seguroSaude = getBool(Console.ReadLine());
+
+                Colaborador colaborador = new(codigo, nome, vencimento,
+                                              subsidioAlimentacao, seguroSaude);
+                colaboradores[oldLength + i] = colaborador;
+            }
+
+            Console.Write("\n");
         }
         public static void listarColaboradores(){
             Console.WriteLine("Listagem de registos de colaboradores\n");
@@ -46,7 +84,7 @@
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
-                          "1. Inserir colaborador\n" +
+                          "1. Inserir colaboradores\n" +
                           "2. Listagem de registos de colaboradores\n" +
                           "3. Consultar o registo de um colaborador\n" +
                           "4. Alterar o registo de um colaborador\n" +
@@ -67,7 +105,7 @@
             Console.Clear();
             switch (opcao) {
                 case 1:
-                    Exemplo();
+                    InserirColaboradores();
                     break;
 
                 case 2:
