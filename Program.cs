@@ -19,8 +19,8 @@
             }
         }
 
-        public string getNome() { return nome; }
-        public double getplafondAlimentacao() { return plafondAlimentacao; }
+        public string GetNome() { return nome; }
+        public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
@@ -98,7 +98,7 @@
             string nome = Console.ReadLine().ToLower();
 
             for (int i = 0; i < colaboradores.Length; i++) {
-                if (nome == colaboradores[i].getNome().ToLower()) {
+                if (nome == colaboradores[i].GetNome().ToLower()) {
                     return i;
                 }
             }
@@ -147,7 +147,9 @@
 
             if (index == -1) { return; }
 
-            Console.Write($"Saldo do subsídio de alimentação: {colaboradores[index].getplafondAlimentacao()}€\n\n");
+            double saldo = colaboradores[index].GetPlafondAlimentacao();
+
+            Console.Write($"Saldo do subsídio de alimentação: {saldo}€\n\n");
         }
 
         public static void Menu() {
