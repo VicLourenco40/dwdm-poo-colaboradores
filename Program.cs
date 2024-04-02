@@ -119,6 +119,24 @@
             Console.Write("\n");
         }
 
+        public static void AlterarColaborador() {
+            int index = FindColaboradorByNome();
+            
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            Console.Write("Vencimento: ");
+            double vencimento = double.Parse(Console.ReadLine());
+            Console.Write("Plafond de alimentação a adicionar: ");
+            double plafondAlimentacao = double.Parse(Console.ReadLine());
+            Console.Write("Seguro de saúde (S/n): ");
+            bool seguroSaude = GetBool(Console.ReadLine());
+
+            colaboradores[index].AlterarColaborador(vencimento, plafondAlimentacao, seguroSaude);
+            Console.Write("\nRegisto alterado com sucesso.\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -155,7 +173,8 @@
                     break;
                 
                 case 4:
-
+                    AlterarColaborador();
+                    break;
 
                 case 0:
                     Environment.Exit(0);
