@@ -20,12 +20,13 @@
         }
 
         public string getNome() { return nome; }
+        public double getplafondAlimentacao() { return plafondAlimentacao; }
 
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
-                          $"Vencimento: {this.vencimento}\n" +
-                          $"Plafond de alimentação: {this.plafondAlimentacao}\n" +
+                          $"Vencimento: {this.vencimento}€\n" +
+                          $"Plafond de alimentação: {this.plafondAlimentacao}€\n" +
                           $"Seguro de saúde: {this.seguroSaude}\n");
         }
 
@@ -139,6 +140,16 @@
             Console.Write("\nRegisto alterado com sucesso.\n\n");
         }
 
+        public static void ConsultarSaldoSubsidioAlimentacao() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            Console.Write($"Saldo do subsídio de alimentação: {colaboradores[index].getplafondAlimentacao()}€\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -178,6 +189,9 @@
                     AlterarColaborador();
                     break;
 
+                case 6:
+                    ConsultarSaldoSubsidioAlimentacao();
+                    break;
                 case 0:
                     Environment.Exit(0);
                     break;
