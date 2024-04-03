@@ -224,7 +224,9 @@
             Console.Write("\n");
 
             if (index == -1) { return; }
+
             Console.Write($"O saldo atual do cartão de {colaboradores[index].GetNome()} é de {colaboradores[index].GetPlafondAlimentacao()}€.\n");
+
             Console.Write("\nValor a carregar: ");
             double valor = double.Parse(Console.ReadLine());
 
@@ -309,7 +311,7 @@
                     
                 case 8:
                     CarregarCartaoRefeicao();
-                    break;  
+                    break;
 
                 case 9:
                     CarregarCartaoRefeicaoTodos();
