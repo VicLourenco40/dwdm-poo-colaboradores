@@ -339,6 +339,7 @@
             string opcao = Console.ReadLine();
 
             Console.Clear();
+
             switch (opcao) {
                 case "1":
                     InserirColaboradores();
