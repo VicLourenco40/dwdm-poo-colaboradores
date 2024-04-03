@@ -1,4 +1,6 @@
-﻿namespace DwdmPooColaboradores {
+﻿using System.Globalization;
+
+namespace DwdmPooColaboradores {
     public class Colaborador {
         public const double SubsidioAlimentacao = 140;
 
@@ -22,6 +24,10 @@
         public string GetNome() { return nome; }
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
+        public string GetCSVString() {
+            return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.seguroSaude}, {this.plafondAlimentacao}";
+        }
+
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
@@ -38,6 +44,8 @@
     }
 
     internal class Program {
+        private const string FilePath = "C:\\Users\\Vicente\\Desktop\\colaboradores.csv";
+
         private static Colaborador[] colaboradores = [];
 
         public static bool GetBool(string boolString) {
@@ -227,11 +235,22 @@
             Console.ReadLine();
         }
 
+        public static void WriteCSV() {
+            using (StreamWriter sw = new(FilePath)) {
+                sw.WriteLine("codigo, nome, vencimento, plafondAlimentacao, seguroSaude");
+
+                for (int i = 0; i < colaboradores.Length; i++) {
+                    sw.WriteLine(colaboradores[i].GetCSVString());
+                }
+            }
+        }
+
         static void Main(string[] args) {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             while (true) {
                 Menu();
+                WriteCSV();
             }
         }
     }
