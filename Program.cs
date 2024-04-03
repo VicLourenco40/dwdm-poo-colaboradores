@@ -218,6 +218,22 @@
             Console.Write("\nValor descontado com sucesso.\n\n");
         }
 
+        public static void CarregarCartaoRefeicao() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+            Console.Write($"O saldo atual do cartão de {colaboradores[index].GetNome()} é de {colaboradores[index].GetPlafondAlimentacao()}€.\n");
+            Console.Write("\nValor a carregar: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            colaboradores[index].CarregarCartaoRefeicao(valor);
+
+            Console.Write($"\nCartão carregado com {valor}€.\n");
+            Console.Write($"\nO saldo atual do cartão é de {colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+        }
+
         public static void CarregarCartaoRefeicaoTodos() {
             double valor = Colaborador.SubsidioAlimentacao;
 
@@ -290,6 +306,10 @@
                 case 7:
                     UsarCartaoRefeicao();
                     break;
+                    
+                case 8:
+                    CarregarCartaoRefeicao();
+                    break;  
 
                 case 9:
                     CarregarCartaoRefeicaoTodos();
