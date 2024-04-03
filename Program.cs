@@ -40,7 +40,7 @@
             return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
         }
 
-        public void indicesrColaborador() {
+        public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
                           $"Vencimento: {this.vencimento}€\n" +
@@ -116,11 +116,11 @@
 
             Console.Write("\nColaboradores inseridos.\n\n");
         }
-        public static void indicesrColaboradores() {
+        public static void ListarColaboradores() {
             for (int i = 0; i < colaboradores.Length; i++) {
                 Console.Write($"Colaborador {i + 1}/{colaboradores.Length}\n");
 
-                colaboradores[i].indicesrColaborador();
+                colaboradores[i].ListarColaborador();
 
                 Console.Write("\n");
             }
@@ -148,7 +148,7 @@
 
             if (index == -1) { return; }
 
-            colaboradores[index].indicesrColaborador();
+            colaboradores[index].ListarColaborador();
 
             Console.Write("\n");
         }
@@ -312,7 +312,7 @@
 
             for (int i = 0 ; i < indices.Length; i++) {
                 Console.Write($"Colaborador {i + 1}/{indices.Length}\n");
-                colaboradores[indices[i]].indicesrColaborador();
+                colaboradores[indices[i]].ListarColaborador();
                 Console.Write("\n");
             }
         }
@@ -345,7 +345,7 @@
                     break;
 
                 case "2":
-                    indicesrColaboradores();
+                    ListarColaboradores();
                     break;
 
                 case "3":
