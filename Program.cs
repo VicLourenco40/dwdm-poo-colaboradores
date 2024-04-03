@@ -218,6 +218,24 @@
             Console.Write("\nValor descontado com sucesso.\n\n");
         }
 
+        public static void CarregarCartaoRefeicao() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            Console.Write($"O saldo atual do cartão de {colaboradores[index].GetNome()} é de {colaboradores[index].GetPlafondAlimentacao()}€.\n");
+
+            Console.Write("\nValor a carregar: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            colaboradores[index].CarregarCartaoRefeicao(valor);
+
+            Console.Write($"\nCartão carregado com {valor}€.\n");
+            Console.Write($"\nO saldo atual do cartão é de {colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+        }
+
         public static void CarregarCartaoRefeicaoTodos() {
             double valor = Colaborador.SubsidioAlimentacao;
 
@@ -253,6 +271,20 @@
 
             Console.Write($"O colaborador com menor vencimento é {nome}, com o valor de {menor}€.\n\n");
         }
+        public static void MaiorVencimento() {
+            string nome = colaboradores[0].GetNome();
+            double vencimento = colaboradores[0].GetVencimento();
+
+            for (int i = 1; i < colaboradores.Length; i++) {
+                if (vencimento < colaboradores[i].GetVencimento()) {
+                    nome = colaboradores[i].GetNome();
+                    vencimento = colaboradores[i].GetVencimento();
+                }
+            }
+
+            Console.Write($"O colaborador com maior vencimento é {nome}, com o valor de {vencimento}€.\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -303,6 +335,10 @@
                 case 7:
                     UsarCartaoRefeicao();
                     break;
+                    
+                case 8:
+                    CarregarCartaoRefeicao();
+                    break;
 
                 case 9:
                     CarregarCartaoRefeicaoTodos();
@@ -310,6 +346,10 @@
 
                 case 10:
                     MediaVencimentos();
+                    break;
+
+                case 11:
+                    MaiorVencimento();
                     break;
 
                 case 12:
