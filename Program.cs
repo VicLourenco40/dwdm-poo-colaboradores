@@ -1,4 +1,6 @@
-﻿namespace DwdmPooColaboradores {
+﻿using System.Globalization;
+
+namespace DwdmPooColaboradores {
     public class Colaborador {
         public const double SubsidioAlimentacao = 140;
 
@@ -7,6 +9,15 @@
         private double vencimento;
         private double plafondAlimentacao;
         private bool seguroSaude;
+
+        public Colaborador(int codigo, string nome, double vencimento,
+                           double plafondAlimentacao, bool seguroSaude) {
+            this.codigo = codigo;
+            this.nome = nome;
+            this.vencimento = vencimento;
+            this.seguroSaude = seguroSaude;
+            this.plafondAlimentacao = plafondAlimentacao;
+        }
 
         public Colaborador(int codigo, string nome, double vencimento,
                            bool subsidioAlimentacao, bool seguroSaude) {
@@ -22,6 +33,9 @@
         public string GetNome() { return nome; }
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
+        public string GetCSVString() {
+            return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
+        }
 
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
@@ -49,6 +63,8 @@
     }
 
     internal class Program {
+        private const string FilePath = "C:\\Users\\Vicente\\Desktop\\colaboradores.csv";
+
         private static Colaborador[] colaboradores = [];
 
         public static bool GetBool(string boolString) {
@@ -261,11 +277,48 @@
             Console.ReadLine();
         }
 
+        public static void WriteCSV() {
+            using (StreamWriter sw = new(FilePath)) {
+                sw.WriteLine("codigo, nome, vencimento, plafondAlimentacao, seguroSaude");
+
+                for (int i = 0; i < colaboradores.Length; i++) {
+                    sw.WriteLine(colaboradores[i].GetCSVString());
+                }
+            }
+        }
+
+        public static void ReadCSV() {
+            string[] linhas = File.ReadAllLines(FilePath).Skip(1).ToArray();
+
+            Array.Resize(ref colaboradores, linhas.Length);
+
+            for (int i = 0; i < linhas.Length; i++) {
+                string[] propriedades = linhas[i].Split(", ");
+
+                Colaborador colaborador = new(
+                    int.Parse(propriedades[0]),
+                    propriedades[1],
+                    double.Parse(propriedades[2]),
+                    double.Parse(propriedades[3]),
+                    bool.Parse(propriedades[4])
+                );
+
+                colaboradores[i] = colaborador;
+            }
+        }
+
         static void Main(string[] args) {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+            if (!File.Exists(FilePath)) {
+                WriteCSV();
+            }
+
+            ReadCSV();
+
             while (true) {
                 Menu();
+                WriteCSV();
             }
         }
     }
