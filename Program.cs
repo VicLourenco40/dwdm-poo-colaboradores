@@ -116,7 +116,7 @@
         }
         public static void ListarColaboradores() {
             for (int i = 0; i < colaboradores.Length; i++) {
-                Console.Write($"Colaborador {i + 1}\n");
+                Console.Write($"Colaborador {i + 1}/{colaboradores.Length}\n");
 
                 colaboradores[i].ListarColaborador();
 
