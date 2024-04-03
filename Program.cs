@@ -43,6 +43,7 @@
             }
 
             this.plafondAlimentacao -= valor;
+            
             return 0;
         }
     }
