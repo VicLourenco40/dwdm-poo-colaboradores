@@ -34,6 +34,8 @@
 
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
+        public bool GetSeguroSaude() { return seguroSaude; }
+
         public string GetCSVString() {
             return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
         }
@@ -292,6 +294,15 @@
             Console.Write($"O colaborador com menor vencimento é {nome}, com o valor de {menor}€.\n\n");
         }
 
+        public static void ComSeguroSaude() {
+            for (int i = 0; i < colaboradores.Length; i++) {
+                if (colaboradores[i].GetSeguroSaude()) {
+                    colaboradores[i].ListarColaborador();
+                    Console.Write("\n");
+                }
+            }
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -361,6 +372,10 @@
 
                 case "12":
                     MenorVencimento();
+                    break;
+
+                case "13":
+                    ComSeguroSaude();
                     break;
 
                 case "0":
