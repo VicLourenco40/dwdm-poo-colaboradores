@@ -68,7 +68,7 @@
     }
 
     internal class Program {
-        private const string FilePath = "C:\\Users\\Vicente\\Desktop\\colaboradores.csv";
+        private const string FilePath = ".\\colaboradores.csv";
 
         private static Colaborador[] colaboradores = [];
 
