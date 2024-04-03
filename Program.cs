@@ -21,8 +21,6 @@
 
         public string GetNome() { return nome; }
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
-        public double GetVencimento() { return vencimento; }
-        public bool GetSeguroSaude() { return seguroSaude; }
 
 
         public void ListarColaborador() {
@@ -37,6 +35,15 @@
             this.vencimento = vencimento;
             this.plafondAlimentacao += plafondAlimentacao;
             this.seguroSaude = seguroSaude;
+        }
+
+        public int UsarCartaoRefeicao(double valor) {
+            if (this.plafondAlimentacao < valor) {
+                return -1;
+            }
+
+            this.plafondAlimentacao -= valor;
+            return 0;
         }
     }
 
@@ -169,7 +176,7 @@
 
             Console.Write($"Saldo do subsídio de alimentação: {saldo}€\n\n");
         }
-        public static void UsarCartaoRefeicoes() {
+        public static void UsarCartaoRefeicao() {
             int index = FindColaboradorByNome();
 
             Console.Write("\n");
@@ -179,15 +186,12 @@
             Console.Write("Valor a descontar: ");
             double valor = double.Parse(Console.ReadLine());
 
-            double saldo = colaboradores[index].GetPlafondAlimentacao();
+            int result = colaboradores[index].UsarCartaoRefeicao(valor);
 
-            if (saldo < valor) {
-                Console.Write("\nSaldo insuficiente!\n\n");
+            if (result == -1) {
+                Console.Write("Saldo insuficiente.\n\n");
                 return;
             }
-
-            colaboradores[index].AlterarColaborador(colaboradores[index].GetVencimento(), - valor, 
-                                                    colaboradores[index].GetSeguroSaude());
 
             Console.Write("\nValor descontado com sucesso.\n\n");
         }
@@ -240,7 +244,7 @@
                     break;
 
                 case 7:
-                    UsarCartaoRefeicoes();
+                    UsarCartaoRefeicao();
                     break;
 
                 case 0:
