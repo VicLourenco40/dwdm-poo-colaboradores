@@ -49,6 +49,10 @@
             this.seguroSaude = seguroSaude;
         }
 
+        public void CarregarCartaoRefeicao() {
+            this.plafondAlimentacao += SubsidioAlimentacao;
+        }
+
         public int UsarCartaoRefeicao(double valor) {
             if (this.plafondAlimentacao < valor) {
                 return -1;
@@ -211,6 +215,14 @@
             Console.Write("\nValor descontado com sucesso.\n\n");
         }
 
+        public static void CarregarCartaoRefeicaoTodos() {
+            for (int i = 0; i < colaboradores.Length; i++) {
+                colaboradores[i].CarregarCartaoRefeicao();
+            }
+
+            Console.Write($"Cartões de Refeição carregados ({Colaborador.SubsidioAlimentacao}€).\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -260,6 +272,10 @@
 
                 case 7:
                     UsarCartaoRefeicao();
+                    break;
+
+                case 9:
+                    CarregarCartaoRefeicaoTodos();
                     break;
 
                 case 0:
