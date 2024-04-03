@@ -1,0 +1,4 @@
+codigo, nome, vencimento, plafondAlimentacao, seguroSaude
+1, diogo, 1234, 140, True
+2, Vicente, 234, 140, True
+3, fernando, 432, 140, False

@@ -40,7 +40,7 @@
             return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
         }
 
-        public void ListarColaborador() {
+        public void indicesrColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
                           $"Vencimento: {this.vencimento}€\n" +
@@ -116,11 +116,11 @@
 
             Console.Write("\nColaboradores inseridos.\n\n");
         }
-        public static void ListarColaboradores() {
+        public static void indicesrColaboradores() {
             for (int i = 0; i < colaboradores.Length; i++) {
                 Console.Write($"Colaborador {i + 1}/{colaboradores.Length}\n");
 
-                colaboradores[i].ListarColaborador();
+                colaboradores[i].indicesrColaborador();
 
                 Console.Write("\n");
             }
@@ -148,7 +148,7 @@
 
             if (index == -1) { return; }
 
-            colaboradores[index].ListarColaborador();
+            colaboradores[index].indicesrColaborador();
 
             Console.Write("\n");
         }
@@ -301,11 +301,19 @@
         }
 
         public static void ComSeguroSaude() {
+            int[] indices = [];
+
             for (int i = 0; i < colaboradores.Length; i++) {
                 if (colaboradores[i].GetSeguroSaude()) {
-                    colaboradores[i].ListarColaborador();
-                    Console.Write("\n");
+                    Array.Resize(ref indices, indices.Length + 1);
+                    indices[indices.Length - 1] = i;
                 }
+            }
+
+            for (int i = 0 ; i < indices.Length; i++) {
+                Console.Write($"Colaborador {i + 1}/{indices.Length}\n");
+                colaboradores[indices[i]].indicesrColaborador();
+                Console.Write("\n");
             }
         }
 
@@ -313,7 +321,7 @@
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
                           " 1. Inserir colaboradores\n" +
-                          " 2. Listar colaboradores\n" +
+                          " 2. indicesr colaboradores\n" +
                           " 3. Consultar colaborador\n" +
                           " 4. Alterar colaborador\n" +
                           " 5. Eliminar colaborador\n" +
@@ -324,7 +332,7 @@
                           "10. Calcular média dos vencimentos\n" +
                           "11. Colaborador com maior vencimento\n" +
                           "12. Colaborador com menor vencimento\n" +
-                          "13. Listar colaboradores com seguro de saúde\n" +
+                          "13. indicesr colaboradores com seguro de saúde\n" +
                           " 0. Sair\n\n" +
                           ": ");
 
@@ -337,7 +345,7 @@
                     break;
 
                 case "2":
-                    ListarColaboradores();
+                    indicesrColaboradores();
                     break;
 
                 case "3":
