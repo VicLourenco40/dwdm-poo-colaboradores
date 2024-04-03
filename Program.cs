@@ -90,7 +90,7 @@
             Array.Resize(ref colaboradores, colaboradores.Length + numero);
 
             for (int i = 0; i < numero; i++) {
-                Console.Write($"\nColaborador {i + 1}\n");
+                Console.Write($"\nColaborador {i + 1}/{numero}\n");
 
                 Console.Write("Código: ");
                 int codigo = int.Parse(Console.ReadLine());
@@ -112,7 +112,7 @@
                 colaboradores[oldLength + i] = colaborador;
             }
 
-            Console.Write("\n");
+            Console.Write("\nColaboradores inseridos.\n\n");
         }
         public static void ListarColaboradores() {
             for (int i = 0; i < colaboradores.Length; i++) {
