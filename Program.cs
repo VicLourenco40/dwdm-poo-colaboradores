@@ -21,6 +21,9 @@
 
         public string GetNome() { return nome; }
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
+        public double GetVencimento() { return vencimento; }
+        public bool GetSeguroSaude() { return seguroSaude; }
+
 
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
@@ -166,6 +169,28 @@
 
             Console.Write($"Saldo do subsídio de alimentação: {saldo}€\n\n");
         }
+        public static void UsarCartaoRefeicoes() {
+            int index = FindColaboradorByNome();
+
+            Console.Write("\n");
+
+            if (index == -1) { return; }
+
+            Console.Write("Valor a descontar: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            double saldo = colaboradores[index].GetPlafondAlimentacao();
+
+            if (saldo < valor) {
+                Console.Write("\nSaldo insuficiente!\n\n");
+                return;
+            }
+
+            colaboradores[index].AlterarColaborador(colaboradores[index].GetVencimento(), - valor, 
+                                                    colaboradores[index].GetSeguroSaude());
+
+            Console.Write("\nValor descontado com sucesso.\n\n");
+        }
 
         public static void Menu() {
             Console.Clear();
@@ -212,6 +237,10 @@
 
                 case 6:
                     ConsultarSaldoCartao();
+                    break;
+
+                case 7:
+                    UsarCartaoRefeicoes();
                     break;
 
                 case 0:
