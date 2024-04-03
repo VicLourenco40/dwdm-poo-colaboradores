@@ -29,6 +29,9 @@
         }
 
         public string GetNome() { return nome; }
+
+        public double GetVencimento() { return vencimento; }
+
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
         public string GetCSVString() {
@@ -225,6 +228,18 @@
             Console.Write($"Cartões de Refeição carregados ({valor}€).\n\n");
         }
 
+        public static void MediaVencimentos() {
+            double soma = 0;
+
+            for (int i = 0; i < colaboradores.Length; i++) {
+                soma += colaboradores[i].GetVencimento();
+            }
+
+            double media = Math.Round(soma / colaboradores.Length, 2);
+
+            Console.Write($"A média dos vencimentos é de {media}€.\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -278,6 +293,10 @@
 
                 case 9:
                     CarregarCartaoRefeicaoTodos();
+                    break;
+
+                case 10:
+                    MediaVencimentos();
                     break;
 
                 case 0:
