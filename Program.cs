@@ -11,6 +11,15 @@ namespace DwdmPooColaboradores {
         private bool seguroSaude;
 
         public Colaborador(int codigo, string nome, double vencimento,
+                           double plafondAlimentacao, bool seguroSaude) {
+            this.codigo = codigo;
+            this.nome = nome;
+            this.vencimento = vencimento;
+            this.seguroSaude = seguroSaude;
+            this.plafondAlimentacao = plafondAlimentacao;
+        }
+
+        public Colaborador(int codigo, string nome, double vencimento,
                            bool subsidioAlimentacao, bool seguroSaude) {
             this.codigo = codigo;
             this.nome = nome;
@@ -25,7 +34,7 @@ namespace DwdmPooColaboradores {
         public double GetPlafondAlimentacao() { return plafondAlimentacao; }
 
         public string GetCSVString() {
-            return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.seguroSaude}, {this.plafondAlimentacao}";
+            return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
         }
 
         public void ListarColaborador() {
@@ -245,8 +254,34 @@ namespace DwdmPooColaboradores {
             }
         }
 
+        public static void ReadCSV() {
+            string[] linhas = File.ReadAllLines(FilePath).Skip(1).ToArray();
+
+            Array.Resize(ref colaboradores, linhas.Length);
+
+            for (int i = 0; i < linhas.Length; i++) {
+                string[] propriedades = linhas[i].Split(", ");
+
+                Colaborador colaborador = new(
+                    int.Parse(propriedades[0]),
+                    propriedades[1],
+                    double.Parse(propriedades[2]),
+                    double.Parse(propriedades[3]),
+                    bool.Parse(propriedades[4])
+                );
+
+                colaboradores[i] = colaborador;
+            }
+        }
+
         static void Main(string[] args) {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            if (!File.Exists(FilePath)) {
+                WriteCSV();
+            }
+
+            ReadCSV();
 
             while (true) {
                 Menu();
