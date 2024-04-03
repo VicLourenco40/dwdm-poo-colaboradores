@@ -201,6 +201,7 @@
 
             Console.Write($"Saldo do cartão de alimentação: {saldo}€\n\n");
         }
+
         public static void UsarCartaoRefeicao() {
             int index = FindColaboradorByNome();
 
