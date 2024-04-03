@@ -78,6 +78,7 @@
             if (boolString == "" || boolString == "s") {
                 return true;
             }
+
             return false;
         }
 
@@ -258,19 +259,6 @@
             Console.Write($"A média dos vencimentos é de {media}€.\n\n");
         }
 
-        public static void MenorVencimento() {
-            double menor = colaboradores[0].GetVencimento();
-            string nome = colaboradores[0].GetNome();
-
-            for (int i = 1; i < colaboradores.Length; i++) {
-                if (colaboradores[i].GetVencimento() < menor) {
-                    menor = colaboradores[i].GetVencimento();
-                    nome = colaboradores[i].GetNome();
-                }
-            }
-
-            Console.Write($"O colaborador com menor vencimento é {nome}, com o valor de {menor}€.\n\n");
-        }
         public static void MaiorVencimento() {
             string nome = colaboradores[0].GetNome();
             double vencimento = colaboradores[0].GetVencimento();
@@ -283,6 +271,20 @@
             }
 
             Console.Write($"O colaborador com maior vencimento é {nome}, com o valor de {vencimento}€.\n\n");
+        }
+
+        public static void MenorVencimento() {
+            double menor = colaboradores[0].GetVencimento();
+            string nome = colaboradores[0].GetNome();
+
+            for (int i = 1; i < colaboradores.Length; i++) {
+                if (colaboradores[i].GetVencimento() < menor) {
+                    menor = colaboradores[i].GetVencimento();
+                    nome = colaboradores[i].GetNome();
+                }
+            }
+
+            Console.Write($"O colaborador com menor vencimento é {nome}, com o valor de {menor}€.\n\n");
         }
 
         public static void Menu() {
