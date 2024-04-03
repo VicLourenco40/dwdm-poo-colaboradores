@@ -206,8 +206,9 @@
 
             if (index == -1) { return; }
 
-            Console.Write($"O saldo atual do cartão de {colaboradores[index].GetNome()} é de" +
-                          $"{colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+            double saldo = colaboradores[index].GetPlafondAlimentacao();
+
+            Console.Write($"Saldo do cartão de alimentação: {saldo}€\n\n");
 
             Console.Write("Valor a descontar: ");
             double valor = double.Parse(Console.ReadLine());
@@ -219,8 +220,10 @@
                 return;
             }
 
+            saldo = colaboradores[index].GetPlafondAlimentacao();
+
             Console.Write("\nValor descontado com sucesso.\n\n" +
-                         $"O saldo atual do cartão é de {colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+                         $"Saldo do cartão de alimentação: {saldo}€\n\n");
         }
 
         public static void CarregarCartaoRefeicao() {
@@ -230,16 +233,19 @@
 
             if (index == -1) { return; }
 
-            Console.Write($"O saldo atual do cartão de {colaboradores[index].GetNome()} é de" +
-                          $"{colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+            double saldo = colaboradores[index].GetPlafondAlimentacao();
+
+            Console.Write($"Saldo do cartão de alimentação: {saldo}€\n\n");
 
             Console.Write("Valor a carregar: ");
             double valor = double.Parse(Console.ReadLine());
 
             colaboradores[index].CarregarCartaoRefeicao(valor);
 
-            Console.Write($"\nCartão carregado com {valor}€.\n\n" +
-                          $"O saldo atual do cartão é de {colaboradores[index].GetPlafondAlimentacao()}€.\n\n");
+            saldo = colaboradores[index].GetPlafondAlimentacao();
+
+            Console.Write("\nValor descontado com sucesso.\n\n" +
+                         $"Saldo do cartão de alimentação: {saldo}€\n\n");
         }
 
         public static void CarregarCartaoRefeicaoTodos() {
