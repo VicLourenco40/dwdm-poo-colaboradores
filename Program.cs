@@ -321,7 +321,7 @@
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
                           " 1. Inserir colaboradores\n" +
-                          " 2. indicesr colaboradores\n" +
+                          " 2. Listar colaboradores\n" +
                           " 3. Consultar colaborador\n" +
                           " 4. Alterar colaborador\n" +
                           " 5. Eliminar colaborador\n" +
@@ -332,7 +332,7 @@
                           "10. Calcular média dos vencimentos\n" +
                           "11. Colaborador com maior vencimento\n" +
                           "12. Colaborador com menor vencimento\n" +
-                          "13. indicesr colaboradores com seguro de saúde\n" +
+                          "13. Listar colaboradores com seguro de saúde\n" +
                           " 0. Sair\n\n" +
                           ": ");
 
