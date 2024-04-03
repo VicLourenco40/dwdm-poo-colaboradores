@@ -49,8 +49,8 @@
             this.seguroSaude = seguroSaude;
         }
 
-        public void CarregarCartaoRefeicao() {
-            this.plafondAlimentacao += SubsidioAlimentacao;
+        public void CarregarCartaoRefeicao(double valor) {
+            this.plafondAlimentacao += valor;
         }
 
         public int UsarCartaoRefeicao(double valor) {
@@ -216,11 +216,13 @@
         }
 
         public static void CarregarCartaoRefeicaoTodos() {
+            double valor = Colaborador.SubsidioAlimentacao;
+
             for (int i = 0; i < colaboradores.Length; i++) {
-                colaboradores[i].CarregarCartaoRefeicao();
+                colaboradores[i].CarregarCartaoRefeicao(valor);
             }
 
-            Console.Write($"Cartões de Refeição carregados ({Colaborador.SubsidioAlimentacao}€).\n\n");
+            Console.Write($"Cartões de Refeição carregados ({valor}€).\n\n");
         }
 
         public static void Menu() {
