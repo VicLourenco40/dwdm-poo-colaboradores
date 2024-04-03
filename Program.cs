@@ -306,59 +306,59 @@
                           " 0. Sair\n\n" +
                           ": ");
 
-            int opcao = int.Parse(Console.ReadLine());
+            string opcao = Console.ReadLine();
 
             Console.Clear();
             switch (opcao) {
-                case 1:
+                case "1":
                     InserirColaboradores();
                     break;
 
-                case 2:
+                case "2":
                     ListarColaboradores();
                     break;
 
-                case 3:
+                case "3":
                     ConsultarColaborador();
                     break;
                 
-                case 4:
+                case "4":
                     AlterarColaborador();
                     break;
 
-                case 5:
+                case "5":
                     EliminarColaborador();
                     break;
 
-                case 6:
+                case "6":
                     ConsultarSaldoCartao();
                     break;
 
-                case 7:
+                case "7":
                     UsarCartaoRefeicao();
                     break;
                     
-                case 8:
+                case "8":
                     CarregarCartaoRefeicao();
                     break;
 
-                case 9:
+                case "9":
                     CarregarCartaoRefeicaoTodos();
                     break;
 
-                case 10:
+                case "10":
                     MediaVencimentos();
                     break;
 
-                case 11:
+                case "11":
                     MaiorVencimento();
                     break;
 
-                case 12:
+                case "12":
                     MenorVencimento();
                     break;
 
-                case 0:
+                case "0":
                     Environment.Exit(0);
                     break;
 
