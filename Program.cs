@@ -169,7 +169,7 @@
 
             colaboradores[index].AlterarColaborador(vencimento, plafondAlimentacao, seguroSaude);
 
-            Console.Write("\nRegisto alterado com sucesso.\n\n");
+            Console.Write("\nColaborador alterado com sucesso.\n\n");
         }
 
         public static void EliminarColaborador() {
