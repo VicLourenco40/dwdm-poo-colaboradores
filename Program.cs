@@ -43,7 +43,7 @@
             }
 
             this.plafondAlimentacao -= valor;
-            
+
             return 0;
         }
     }
@@ -190,7 +190,7 @@
             int result = colaboradores[index].UsarCartaoRefeicao(valor);
 
             if (result == -1) {
-                Console.Write("Saldo insuficiente.\n\n");
+                Console.Write("\nSaldo insuficiente.\n\n");
                 return;
             }
 
