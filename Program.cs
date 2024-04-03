@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace DwdmPooColaboradores {
+﻿namespace DwdmPooColaboradores {
     public class Colaborador {
         public const double SubsidioAlimentacao = 140;
 
