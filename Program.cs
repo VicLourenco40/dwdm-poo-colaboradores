@@ -240,6 +240,20 @@
             Console.Write($"A média dos vencimentos é de {media}€.\n\n");
         }
 
+        public static void MaiorVencimento() {
+            string nome = colaboradores[0].GetNome();
+            double vencimento = colaboradores[0].GetVencimento();
+
+            for (int i = 1; i < colaboradores.Length; i++) {
+                if (vencimento < colaboradores[i].GetVencimento()) {
+                    nome = colaboradores[i].GetNome();
+                    vencimento = colaboradores[i].GetVencimento();
+                }
+            }
+
+            Console.Write($"O colaborador com maior vencimento é {nome}, com o valor de {vencimento}€.\n\n");
+        }
+
         public static void Menu() {
             Console.Clear();
             Console.Write("Gestão de colaboradores\n\n" +
@@ -297,6 +311,10 @@
 
                 case 10:
                     MediaVencimentos();
+                    break;
+
+                case 11:
+                    MaiorVencimento();
                     break;
 
                 case 0:
