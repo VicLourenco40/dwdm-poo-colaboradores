@@ -332,7 +332,7 @@
             double vencimento = colaboradores[0].GetVencimento();
 
             // Percorrer todos os colaboradores, e obter o seu respetivo nome e vencimento
-            // caso este seja maior do que o que temos guardado
+            // caso este seja maior do que o que temos guardado.
             for (int i = 1; i < colaboradores.Length; i++) {
                 if (vencimento < colaboradores[i].GetVencimento()) {
                     nome = colaboradores[i].GetNome();
