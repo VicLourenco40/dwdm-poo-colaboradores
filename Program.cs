@@ -116,6 +116,7 @@
 
             Console.Write("\nColaboradores inseridos.\n\n");
         }
+
         public static void ListarColaboradores() {
             for (int i = 0; i < colaboradores.Length; i++) {
                 Console.Write($"Colaborador {i + 1}/{colaboradores.Length}\n");
@@ -440,11 +441,11 @@
         static void Main(string[] args) {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            if (!File.Exists(FilePath)) {
+            if (File.Exists(FilePath)) {
+                ReadCSV();
+            } else {
                 WriteCSV();
             }
-
-            ReadCSV();
 
             while (true) {
                 Menu();
