@@ -1,4 +1,9 @@
-﻿namespace DwdmPooColaboradores {
+﻿// Programação Orientada a Objetos - Colaboradores
+// Vicente Lourenço
+// Diogo Tavares
+// DWDM 2023/24
+
+namespace DwdmPooColaboradores {
     public class Colaborador {
         // Definição de constantes.
         public const double SubsidioAlimentacao = 140;
