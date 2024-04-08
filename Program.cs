@@ -94,7 +94,7 @@ namespace DwdmPooColaboradores {
 
     internal class Program {
         // Caminho para o ficheiro CSV.
-        private const string FilePath = "colaboradores.csv";
+        private const string FilePath = @"colaboradores.csv";
 
         private static Colaborador[] colaboradores = [];
 
