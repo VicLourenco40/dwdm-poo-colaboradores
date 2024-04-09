@@ -511,7 +511,7 @@ namespace DwdmPooColaboradores {
                 string[] atributos = linhas[i].Split(", ");
 
                 // Instanciar um novo colaborador com os atributos obtidos acima,
-                // convertendo-as no seu respetivo tipo de dado.
+                // convertendo-os no seu respetivo tipo de dado.
                 Colaborador colaborador = new(
                     int.Parse(atributos[0]),
                     atributos[1],
