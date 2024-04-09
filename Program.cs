@@ -424,14 +424,14 @@
             Array.Resize(ref colaboradores, linhas.Length);
 
             for (int i = 0; i < linhas.Length; i++) {
-                string[] propriedades = linhas[i].Split(", ");
+                string[] atributos = linhas[i].Split(", ");
 
                 Colaborador colaborador = new(
-                    int.Parse(propriedades[0]),
-                    propriedades[1],
-                    double.Parse(propriedades[2]),
-                    double.Parse(propriedades[3]),
-                    bool.Parse(propriedades[4])
+                    int.Parse(atributos[0]),
+                    atributos[1],
+                    double.Parse(atributos[2]),
+                    double.Parse(atributos[3]),
+                    bool.Parse(atributos[4])
                 );
 
                 colaboradores[i] = colaborador;
