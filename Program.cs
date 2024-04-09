@@ -4,11 +4,12 @@
 // DWDM 2023/24
 
 namespace DwdmPooColaboradores {
+    // Definição da classe "Colaborador"
     public class Colaborador {
         // Definição de constantes.
         public const double SubsidioAlimentacao = 140;
 
-        // Definição de propriedades.
+        // Definição de atributos.
         private int codigo;
         private string nome;
         private double vencimento;
@@ -50,7 +51,7 @@ namespace DwdmPooColaboradores {
 
         public bool GetSeguroSaude() { return seguroSaude; }
 
-        // Retornar uma string em formato CSV com todas as propriedades do colaborador,
+        // Retornar uma string em formato CSV com todos os atributos do colaborador,
         // preparada para exportação.
         public string GetCSVString() {
             return $"{this.codigo}, {this.nome}, {this.vencimento}, {this.plafondAlimentacao}, {this.seguroSaude}";
@@ -58,7 +59,7 @@ namespace DwdmPooColaboradores {
 
         // Definição de Métodos.
 
-        // Mostrar as propriedades da instância do Colaborador.
+        // Mostrar os atributos da instância do Colaborador.
         public void ListarColaborador() {
             Console.Write($"Código: {this.codigo}\n" +
                           $"Nome: {this.nome}\n" +
@@ -67,7 +68,7 @@ namespace DwdmPooColaboradores {
                           $"Seguro de saúde: {this.seguroSaude}\n");
         }
 
-        // Alterar as propriedades da instância do Colaborador.
+        // Alterar os atributos da instância do Colaborador.
         public void AlterarColaborador(double vencimento, double plafondAlimentacao, bool seguroSaude) {
             this.vencimento = vencimento;
             this.plafondAlimentacao += plafondAlimentacao;
@@ -140,7 +141,7 @@ namespace DwdmPooColaboradores {
                 Console.Write("Seguro de saúde (S/n): ");
                 bool seguroSaude = GetBool(Console.ReadLine());
 
-                // Instanciar um novo colaborador com as propriedades obtidas acima.
+                // Instanciar um novo colaborador com os atributos obtidos acima.
                 Colaborador colaborador = new(codigo, nome, vencimento,
                                               subsidioAlimentacao, seguroSaude);
                 colaboradores[oldLength + i] = colaborador;
@@ -505,18 +506,18 @@ namespace DwdmPooColaboradores {
             Array.Resize(ref colaboradores, linhas.Length);
 
             for (int i = 0; i < linhas.Length; i++) {
-                // Separar cada string CSV em propriedades individuais.
+                // Separar cada string CSV em atributos individuais.
                 // O delimitador escolhido para o CSV é ", ".
-                string[] propriedades = linhas[i].Split(", ");
+                string[] atributos = linhas[i].Split(", ");
 
-                // Instanciar um novo colaborador com as propriedades obtidas acima,
+                // Instanciar um novo colaborador com os atributos obtidos acima,
                 // convertendo-as no seu respetivo tipo de dado.
                 Colaborador colaborador = new(
-                    int.Parse(propriedades[0]),
-                    propriedades[1],
-                    double.Parse(propriedades[2]),
-                    double.Parse(propriedades[3]),
-                    bool.Parse(propriedades[4])
+                    int.Parse(atributos[0]),
+                    atributos[1],
+                    double.Parse(atributos[2]),
+                    double.Parse(atributos[3]),
+                    bool.Parse(atributos[4])
                 );
 
                 colaboradores[i] = colaborador;
